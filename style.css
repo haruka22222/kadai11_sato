@@ -16,21 +16,24 @@ h1{
   100% {background-position: 100% 0;}
 }
 
-p{
+#sentaku{
   display: flex;
   justify-content: center;
+  padding-bottom: 25px;
 }
 
 #gubox{
  display: flex;
  align-items: center;
  justify-content: center;
+ padding-bottom: 20px;
 }
 
 #chokibox{
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
 #pabox{
@@ -51,17 +54,22 @@ img{
   padding-top: 50px;
 }
 
-/*下線*/
-#test{
-  position: relative;
-  	padding: 0.3em;
-  }
-#test:after {
-  content: '';
-  position: absolute;
-  left: 0;
-    bottom: 0;
-  width: 105px;
-    height: 7px;
-    background: repeating-linear-gradient(-45deg, #FF6633, #FF6633 4px, white 4px, white 8px);
-  }
+.star {
+    animation: kirakira 8s linear;
+    color: yellow;
+    display: inline-block;
+    height: 1em;
+    line-height: 1em;
+    position: fixed;
+    top: -1em;
+    z-index: 1000;
+}
+
+@keyframes kirakira {
+    0% {
+        transform:translateY(0) rotateY(0);
+    }
+    100% {
+        transform:translateY(calc(100vh + 1em)) rotateY(3600deg);
+    }
+}

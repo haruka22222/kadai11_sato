@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="style.css" rel="stylesheet" type="text/css">
-  <title>Document</title>
+  <title>じゃんけんゲーム</title>
 </head>
+
 <body>
     <div class="janken">
-      <h1>☆じゃんけんゲーム☆</h1>
+      <h1>★じゃんけんゲーム★</h1>
     </div>
 
-      <p>↓のどれかを選んでね！</p>
+      <div id="sentaku">↓のどれかを選んでね！</div>
       <div id="gubox">
         <div id="btn1">ぐーボタンだよ</div>
         <div id="teki1"></div>
@@ -40,18 +42,9 @@
   もう一度やる
 </div>
 
-<span data-text="M"></span>
-<span data-text="A"></span>
-<span data-text="G"></span>
-<span data-text="N"></span>
-<span data-text="E"></span>
-<span data-text="T"></span>
-<span data-text="Y"></span>
-<span data-text="P"></span>
-<span data-text="E"></span>
-
-
   <script>
+
+  var sentaku = document.getElementById('sentaku');
 
   var gubox = document.getElementById('gubox');
   var choki = document.getElementById('choki');
@@ -89,6 +82,7 @@
     }
       chokibox.style.display = "none";
       pabox.style.display = "none";
+      sentaku.style.display = "none";
   });
 
 
@@ -108,6 +102,7 @@
     }
     gubox.style.display = "none";
     pabox.style.display = "none";
+    sentaku.style.display = "none";
   });
 
   btn3.addEventListener('click', function(){
@@ -127,12 +122,46 @@
     }
     chokibox.style.display = "none";
     gubox.style.display = "none";
+    sentaku.style.display = "none";
   });
 
 test.addEventListener('click', function(){
   window.location.reload();
 });
 
+//星を作る関数。n は星の個数。多いほど星が多く振ります。
+function starMaker(n) {
+    var star = document.createElement("div");
+    star.className = "star";
+    star.textContent = "★";
+    for(var i = 0; i < n; i++) {
+        starSet(star);
+    }
+}
+
+//星のセッティングをする関数。
+function starSet(clone) {
+    var starClone = clone.cloneNode(true);
+    var starStyle = starClone.style;
+
+    //星の位置（left）、アニメーションの遅延時間（animation-delay）、サイズ（font-size）をランダムで指定
+    starStyle.left = 100 * Math.random() + "%";
+    starStyle.animationDelay = 8 * Math.random() + "s";
+    starStyle.fontSize = ~~(50 * Math.random() + 20) + "px";
+    document.body.appendChild(starClone);
+
+    //星一つのアニメーションが終わったら新しい星を生成
+    starClone.addEventListener("animationend", function() {
+        this.parentNode.removeChild(this);
+        var star = document.createElement("div");
+        star.className = "star";
+        star.textContent = "★";
+        starSet(star);
+    }, false)
+}
+
+//使用例。星を35個ふらせます。
+starMaker(35)
 
   </script>
 
