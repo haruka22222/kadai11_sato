@@ -4,114 +4,135 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="style.css" rel="stylesheet" type="text/css">
   <title>Document</title>
 </head>
 <body>
-    <div id="btn">ボタンだよ</div>
-    <div id="btn1">ボタン1だよ</div>
-    <div id="btn2">ボタン2だよ</div>
+    <div class="janken">
+      <h1>☆じゃんけんゲーム☆</h1>
+    </div>
+
+      <p>↓のどれかを選んでね！</p>
+      <div id="gubox">
+        <div id="btn1">ぐーボタンだよ</div>
+        <div id="teki1"></div>
+      </div>
+      <div id="chokibox">
+        <div id="btn2">チョキボタンだよ</div>
+        <div id="teki2"></div>
+      </div>
+      <div id="pabox">
+        <div id="btn3">パーボタンだよ</div>
+        <div id="teki3"></div>
+      </div>
+    </div>
+
+<div id="win">
+</div>
+
+<div id="lose">
+</div>
+
+<div id="draw">
+</div>
+
+<div id="test">
+  もう一度やる
+</div>
+
+<span data-text="M"></span>
+<span data-text="A"></span>
+<span data-text="G"></span>
+<span data-text="N"></span>
+<span data-text="E"></span>
+<span data-text="T"></span>
+<span data-text="Y"></span>
+<span data-text="P"></span>
+<span data-text="E"></span>
+
+
   <script>
-  // これを用いることで場所を特定することができる（取得する）
-    var btn = document.getElementById('btn');
-    // document.getElementById('btn1');
-    // document.getElementById('btn2');
 
-    btn.addEventListener('click',function(){
-      btn.innerHTML = '変更したよ';
-    });
+  var gubox = document.getElementById('gubox');
+  var choki = document.getElementById('choki');
+  var pabox = document.getElementById('pabox');
 
+  var btn1 = document.getElementById('btn1');
+  var teki1 = document.getElementById('teki1');
+  var btn2 = document.getElementById('btn2');
+  var teki2 = document.getElementById('teki2');
+  var btn3 = document.getElementById('btn3');
+  var teki3 = document.getElementById('teki3');
 
-    // btn1には<h1>初めてのJavaScript</h1>
-    // btn2には<img src="" alt"/>
-    var btn1 = document.getElementById('btn1');
-    btn1.addEventListener('click',function(){
-      btn1.innerHTML = '<h1>初めてのJavaScript</h1>';
-    });
+  var win = document.getElementById('win');
+  var lose = document.getElementById('lose');
+  var draw = document.getElementById('draw');
 
-    var btn2 = document.getElementById('btn2');
-    btn2.addEventListener('click',function(){
-      btn2.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/2016-06-12_Orange_and_white_tabby_cat_born_in_2016_%E8%8C%B6%E3%83%88%E3%83%A9%E7%99%BD%E3%81%AD%E3%81%93%E5%AD%90%E7%8C%AB_2016%E5%B9%B4%E7%94%9F%E3%81%BE%E3%82%8C_DSCF6403%E2%98%86%E5%BD%A1.jpg" alt"/>';
-    });
+  var test = document.getElementById('test');
+
+  var rand = Math.floor(Math.random() * 3);
 
 
+  btn1.addEventListener('click', function(){
+    if(rand == 0){
+      btn1.innerHTML = '<img src="img/janken_gu.png">';
+      teki1.innerHTML = '<img src="img/janken_teki_pa.png">';
+      lose.innerHTML = '<img src="img/lose.png">';
+    }else if(rand == 1){
+      btn1.innerHTML = '<img src="img/janken_gu.png">';
+      teki1.innerHTML = '<img src="img/janken_teki_choki.png">';
+      win.innerHTML = '<img src="img/win.png">';
+    }else if(rand == 2){
+      btn1.innerHTML = '<img src="img/janken_gu.png">';
+      teki1.innerHTML = '<img src="img/janken_teki_gu.png">';
+      draw.innerHTML = '<img src="img/draw.png">';
+    }
+      chokibox.style.display = "none";
+      pabox.style.display = "none";
+  });
 
-//     console.log("初めてのjavascript");
-//     console.log(23 * 5);
-//     console.log(2000 / 1800);
-//     console.log(23 % 5);
-//
-//     var name ="佐藤";
-//     console.log(name);
-//     // 文字列で表示↓
-//     console.log("name");
-//
-// // if文
-//     var point ="90";
-//     if(point<=80)
-//       {console.log("おめでとう");
-//     }else{
-//       console.log("頑張りましょう");
-//       }
-//
-// // 乱数が0~5まで表示される
-//     var rand = Math.floor(Math.random() * 5);
-//     // console.log(rand);
-//
-//     if(rand==0)
-//     {
-//       console.log("すごい")
-//     }
-//     if(rand==1)
-//     {
-//       console.log("すごいね")
-//     }
-//     if(rand==2)
-//     {
-//       console.log("普通")
-//     }
-//     if(rand==3)
-//     {
-//       console.log("いまいち")
-//     }
-//     if(rand==4)
-//     {
-//       console.log("残念")
-//     }
-//
-// // 上の別パターン↓
-//     if(rand == 0){
-//       console.log("すごい")
-//     }else if(rand==1){
-//       console.log("すごいね")
-//     }else if(rand==2){
-//       console.log("普通")
-//     }else if(rand==3){
-//       console.log("いまいち")
-//     }else if(rand==4){
-//       console.log("残念")
-//     }
-//
-// // 配列
-//     var array = ['a','b','c'];
-//     var array2 = ['aa','bb','cc'];
-//     console.log(array);
-//     console.log(array2);
-//
-// // 配列の練習問題
-//     var array3 = ['ぶどう','りんご','バナナ','さくらんぼ','メロン','オレンジ'];
-//     console.log(array3);
-//
-//     // 先頭に追加
-//     array3.unshift('パイナップル');
-//     // 末尾に追加
-//     array3.push('pineapple')
-//
-// // for文　繰り返し処理
-//     var i =0;
-//     for(i = 0; i <50; i++){
-//       console.log(i);
-//     }
-//
+
+  btn2.addEventListener('click', function(){
+    if(rand == 0){
+      btn2.innerHTML = '<img src="img/janken_teki_choki.png">';
+      teki2.innerHTML = '<img src="img/janken_teki_pa.png">';
+      win.innerHTML = '<img src="img/win.png">';
+    }else if(rand == 1){
+      btn2.innerHTML = '<img src="img/janken_choki.png">';
+      teki2.innerHTML = '<img src="img/janken_teki_choki.png">';
+      draw.innerHTML = '<img src="img/draw.png">';
+    }else if(rand == 2){
+      btn2.innerHTML = '<img src="img/janken_choki.png">';
+      teki2.innerHTML = '<img src="img/janken_teki_gu.png">';
+      lose.innerHTML = '<img src="img/lose.png">';
+    }
+    gubox.style.display = "none";
+    pabox.style.display = "none";
+  });
+
+  btn3.addEventListener('click', function(){
+    if(rand == 0){
+      btn3.innerHTML = '<img src="img/janken_pa.png">';
+      teki3.innerHTML = '<img src="img/janken_teki_pa.png">';
+      draw.innerHTML = '<img src="img/draw.png">';
+    }else if(rand == 1){
+      btn3.innerHTML = '<img src="img/janken_pa.png">';
+      teki3.innerHTML = '<img src="img/janken_teki_choki.png">';
+      lose.innerHTML = '<img src="img/lose.png">';
+
+    }else if(rand == 2){
+      btn3.innerHTML = '<img src="img/janken_pa.png">';
+      teki3.innerHTML = '<img src="img/janken_teki_gu.png">';
+      win.innerHTML = '<img src="img/win.png">';
+    }
+    chokibox.style.display = "none";
+    gubox.style.display = "none";
+  });
+
+test.addEventListener('click', function(){
+  window.location.reload();
+});
+
 
   </script>
 

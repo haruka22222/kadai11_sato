@@ -1,0 +1,67 @@
+
+h1{
+  display: flex;
+  justify-content: center;
+}
+
+.janken{
+  -webkit-animation: scrollmask 35s ease 1.5s infinite;
+  -webkit-background-clip: text;
+  background-image: url(img/star.jpg);
+  color: transparent;
+  font-size: 40px;
+}
+@-webkit-keyframes scrollmask {
+  0% {background-position: 0 0;}
+  100% {background-position: 100% 0;}
+}
+
+p{
+  display: flex;
+  justify-content: center;
+}
+
+#gubox{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+#chokibox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pabox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img{
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+#test{
+  padding-left: 50px;
+  padding-top: 50px;
+}
+
+/*下線*/
+#test{
+  position: relative;
+  	padding: 0.3em;
+  }
+#test:after {
+  content: '';
+  position: absolute;
+  left: 0;
+    bottom: 0;
+  width: 105px;
+    height: 7px;
+    background: repeating-linear-gradient(-45deg, #FF6633, #FF6633 4px, white 4px, white 8px);
+  }
